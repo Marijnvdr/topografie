@@ -9,7 +9,8 @@ export default DS.RESTSerializer.extend({
   // Every model item is lowercase, but the payload is Capitalized coming from the API.
   // This method does the mapping from model (attr parameter) to Payload (return value)
   keyForAttribute: function(attr) {
-  	return attr.charAt(0).toUpperCase() + attr.substring(1);
+  	// return attr.charAt(0).toUpperCase() + attr.substring(1);
+  	return attr.capitalize();
   }
 
   /*
