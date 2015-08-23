@@ -2,12 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 	didInsertElement: function() {
-      window.google.setOnLoadCallback(drawRegionsMap);
+      let country = this.get('cntry');
+      window.google.setOnLoadCallback(drawRegionsMap(country));
 
-      function drawRegionsMap() {
+      function drawRegionsMap(countryName) {           
           var data = window.google.visualization.arrayToDataTable([
             ['Country'],
-            ['France']
+            [countryName]
           ]);
 
           var options = {
