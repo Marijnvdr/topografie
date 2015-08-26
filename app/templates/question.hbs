@@ -1,0 +1,9 @@
+<p>Question answer provided by API: {{model.Answer.Name_nl}}</p>
+<div style="margin-bottom: 20px">
+<h2>Possible answers:</h2>
+{{#each model.Choices as |answer|}}
+  <li>{{answer.Name_nl}}</li>
+{{/each}}
+</div>
+{{#country-map cntry = model.Answer }}
+{{/country-map}}

@@ -5,6 +5,8 @@ module.exports = function(environment) {
     modulePrefix: 'topografie',
     environment: environment,
     baseURL: '/',
+    apiHost: 'http://localhost:57116',
+    apiNamespace : 'api',
     locationType: 'auto',
     contentSecurityPolicy: {
        'connect-src': "'self' 'unsafe-inline' http://localhost:57116",

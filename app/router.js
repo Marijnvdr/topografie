@@ -7,7 +7,7 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
 	this.route('capital', { path: '/capital' });
-	this.route('country', { path: '/country' });
+	this.route('question', { path: '/question' });
 });
 
 export default Router;

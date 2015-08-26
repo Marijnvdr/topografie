@@ -1,6 +1,7 @@
 import DS from 'ember-data';
+import ENV from 'topografie/config/environment';
 
 export default DS.JSONAPIAdapter.extend({
-  host: 'http://localhost:57116',
-  namespace: 'api'
+  host: ENV.apiHost,
+  namespace: ENV.apiNamespace
 });

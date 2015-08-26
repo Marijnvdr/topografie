@@ -2,17 +2,17 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 	didInsertElement: function() {
-      let country = this.get('cntry');
-      window.google.setOnLoadCallback(drawRegionsMap(country));
+      let cntry = this.get('cntry');
+      window.google.setOnLoadCallback(drawRegionsMap(cntry));
 
-      function drawRegionsMap(countryName) {           
+      function drawRegionsMap(country) {           
           var data = window.google.visualization.arrayToDataTable([
             ['Country'],
-            [countryName]
+            [country.Name]
           ]);
 
           var options = {
-              region: '150',
+              region: country.Region,
               datalessRegionColor: '#f5f5f5',
               defaultColor: '#8cbbd0'
           };
