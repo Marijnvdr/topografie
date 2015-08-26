@@ -5,7 +5,16 @@ module.exports = function(environment) {
     modulePrefix: 'topografie',
     environment: environment,
     baseURL: '/',
+    apiHost: 'http://localhost:57116',
+    apiNamespace : 'api',
     locationType: 'auto',
+    contentSecurityPolicy: {
+       'connect-src': "'self' 'unsafe-inline' http://localhost:57116",
+       'script-src': "'self' 'unsafe-inline' 'unsafe-eval' https://*.googleapis.com https://*.gstatic.com https://*.google.com http://www.gstatic.com",
+       'img-src': "'self' https://*.googleapis.com https://*.gstatic.com https://*.google.com",
+       'font-src': "'self' https://*.gstatic.com https://*.google.com",
+       'style-src': "'self' 'unsafe-inline' https://*.googleapis.com https://*.google.com"
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
