@@ -8,7 +8,7 @@ export default Ember.Component.extend({
       function drawRegionsMap(country) {           
           var data = window.google.visualization.arrayToDataTable([
             ['Country'],
-            [country.Name]
+            [country.Code]
           ]);
 
           var options = {
