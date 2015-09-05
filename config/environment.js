@@ -5,7 +5,8 @@ module.exports = function(environment) {
     modulePrefix: 'topografie',
     environment: environment,
     baseURL: '/',
-    apiHost: 'http://localhost:57116',
+    // apiHost: 'http://localhost:57116',
+    apiHost: 'http://topografieapi.azurewebsites.net',
     apiNamespace : 'api',
     locationType: 'auto',
     contentSecurityPolicy: {
