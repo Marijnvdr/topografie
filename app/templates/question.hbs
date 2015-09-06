@@ -4,9 +4,9 @@
 <h1>Question: {{score.count}} </h1>
 
 <h2>Possible answers:</h2>
-{{#each model.Choices as |answer|}}
-  <button {{action 'givenAnswer' answer.Code}}>{{answer.Name_nl}}</button>
+{{#each model.choices as |answer|}}
+  <button {{action 'givenAnswer' answer.code}}>{{answer.name_nl}}</button>
 {{/each}}
 </div>
-{{#country-map cntry = model.Answer }}
+{{#country-map cntry = model.answer }}
 {{/country-map}}

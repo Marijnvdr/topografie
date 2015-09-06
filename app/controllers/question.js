@@ -9,16 +9,12 @@ actions: {
     givenAnswer(countryCode) {        
     	let model = this.get('model');    	
         let count = this.get('score.count');
-        let comment = '';
         this.set('score.count', count + 1);
-    	if (model.Answer.Code === countryCode) {
+    	if (model.answer.code === countryCode) {
             let total = this.get('score.total');
-            this.set('score.total', total + 50);
-            comment = 'Great answer!';
-    	} else {
-    		comment = 'wrong answer';
+            this.set('score.total', total + 50);            
     	}
-        this.transitionToRoute('questionnext', comment);
+        this.send('invalidateModel');
     }
   }  
 });
