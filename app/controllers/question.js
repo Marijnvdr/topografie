@@ -1,8 +1,9 @@
 import Ember from 'ember';
 import Score from 'topografie/models/score';
-import ENV from 'topografie/config/environment';
 
 export default Ember.Controller.extend({    
+    queryParams: [ "id"],
+    id: 1,
     score: Score.create(),
 actions: {
     givenAnswer(countryCode) {        
@@ -13,7 +14,7 @@ actions: {
     	if (model.Answer.Code === countryCode) {
             let total = this.get('score.total');
             this.set('score.total', total + 50);
-            comment = 'Great answer!'
+            comment = 'Great answer!';
     	} else {
     		comment = 'wrong answer';
     	}
