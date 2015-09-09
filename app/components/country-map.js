@@ -1,18 +1,18 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-	didInsertElement: function() {
+	didRender: function() {
       let cntry = this.get('cntry');
       window.google.setOnLoadCallback(drawRegionsMap(cntry));
 
       function drawRegionsMap(country) {           
           var data = window.google.visualization.arrayToDataTable([
             ['Country'],
-            [country.Name]
+            [country.code]
           ]);
 
           var options = {
-              region: country.Region,
+              region: country.region,
               datalessRegionColor: '#f5f5f5',
               defaultColor: '#8cbbd0'
           };

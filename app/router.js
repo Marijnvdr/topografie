@@ -6,6 +6,7 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+	this.route('gamedef', { path: '/' });
 	this.route('capital', { path: '/capital' });
 	this.route('question', { path: '/question' });
 });

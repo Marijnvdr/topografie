@@ -1,9 +1,12 @@
-<p>Question answer provided by API: {{model.Answer.Name_nl}}</p>
 <div style="margin-bottom: 20px">
+<h1>Name: {{score.name}}</h1>
+<h1>Score: {{score.total}} </h1>
+<h1>Question: {{score.count}} </h1>
+
 <h2>Possible answers:</h2>
-{{#each model.Choices as |answer|}}
-  <li>{{answer.Name_nl}}</li>
+{{#each model.choices as |answer|}}
+  <button {{action 'givenAnswer' answer.code}}>{{answer.name_nl}}</button>
 {{/each}}
 </div>
-{{#country-map cntry = model.Answer }}
+{{#country-map cntry = model.answer }}
 {{/country-map}}
