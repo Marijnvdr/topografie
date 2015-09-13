@@ -32,10 +32,12 @@
     "ember-cli-notifications": "2.1.2",
     "ember-cli-qunit": "0.3.15",
     "ember-cli-release": "0.2.3",
+    "ember-cli-sass": "4.2.0",
     "ember-cli-uglify": "^1.0.1",
     "ember-data": "1.13.5",
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "^1.0.2",
-    "ember-local-storage": "0.0.9"
+    "ember-local-storage": "0.0.9",
+    "ember-modal-dialog": "0.8.0"
   }
 }

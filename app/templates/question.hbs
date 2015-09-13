@@ -1,3 +1,14 @@
+<div style="margin-right: 20px">
+  <button {{action "resetGameWarning"}}>Reset game</button>
+  {{#if isShowingModal}}
+    {{#modal-dialog targetAttachment="center"
+                    translucentOverlay=true}}
+      <p>Do you really want to reset the game?</p>      
+      <button {{action "doResetGame"}}>Yes</button>
+      <button {{action "cancelResetGame"}}>No</button>
+    {{/modal-dialog}}
+  {{/if}}
+</div>
 <div style="margin-bottom: 20px">
 <h1>Name: {{score.name}}</h1>
 <h1>Score: {{score.total}} </h1>
@@ -8,5 +19,12 @@
   <button {{action 'givenAnswer' answer.code}}>{{answer.name_nl}}</button>
 {{/each}}
 </div>
+<div class="c-notification__container">
+  {{#each notifications as |notification|}}
+    {{notification-message notification=notification}}
+  {{/each}}
+</div>
+<div style="margin-top: 20px">
 {{#country-map cntry = model.answer }}
 {{/country-map}}
+</div>
