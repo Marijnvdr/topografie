@@ -6,7 +6,7 @@ module.exports = function(environment) {
     environment: environment,
     baseURL: '/',
     // apiHost: 'http://localhost:57116',
-    apiHost: 'http://topografieapi.azurewebsites.net',
+    apiHost: 'http://topogame.azurewebsites.net',
     apiNamespace : 'api',
     locationType: 'auto',
     contentSecurityPolicy: {

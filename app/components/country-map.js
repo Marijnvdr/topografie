@@ -11,8 +11,13 @@ export default Ember.Component.extend({
             [country.code]
           ]);
 
+          var region = country.region;
+          if (country.showSubRegion) {
+            region = country.subRegion;
+          }
+
           var options = {
-              region: country.region,
+              region: region,
               datalessRegionColor: '#f5f5f5',
               defaultColor: '#8cbbd0'
           };
