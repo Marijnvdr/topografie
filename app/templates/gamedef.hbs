@@ -2,3 +2,9 @@
 {{input value=playerName}}
 
 <button {{action 'startGame'}}>Start</button>
+
+<ul>
+  {{#each model as |c|}}
+    <li>{{c.name}}: {{c.difficultyLevel}}</li>
+  {{/each}}
+</ul>

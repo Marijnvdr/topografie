@@ -7,5 +7,5 @@ export default DS.Model.extend({
   subRegion: DS.attr(),
   code: DS.attr(),
   showSubRegion: DS.attr(),
-  DifficultyLevel: DS.attr()
+  difficultyLevel: DS.attr()
 });
