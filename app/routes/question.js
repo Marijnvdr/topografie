@@ -3,9 +3,8 @@ import ENV from 'topografie/config/environment';
 
 export default Ember.Route.extend({
   model: function() {
-    // return this.store.findRecord('questioncountry', params.id);
-  	let url = ENV.apiHost + '/' + ENV.apiNamespace + '/questioncountries';
-    return Ember.$.getJSON(url);
+    // ToDo: give different difficultyLevels after couple of questions.
+    return this.store.queryRecord('questioncountry', { difficultyLevel: 3 });      
   },
 
   activate: function() {    

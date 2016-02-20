@@ -7,12 +7,12 @@ export default Ember.Controller.extend({
     score: Score.create(),
     isShowingModal: false,
 actions: {
-    givenAnswer(countryCode) {        
+    givenAnswer(countryCode) {     
     	let model = this.get('model');    	
         let count = this.get('score.count');
         this.set('score.count', count + 1);
     	let notifcation = {};
-        if (model.answer.code === countryCode) {
+        if (model.get('answer').get('code') === countryCode) {
             let total = this.get('score.total');
             this.set('score.total', total + 50);            
             notifcation.message = 'Great answer!';
