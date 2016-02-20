@@ -8,12 +8,12 @@ export default Ember.Component.extend({
       function drawRegionsMap(country) {           
           var data = window.google.visualization.arrayToDataTable([
             ['Country'],
-            [country.code]
+            [country.get('code')]
           ]);
 
-          var region = country.region;
-          if (country.showSubRegion) {
-            region = country.subRegion;
+          var region = country.get('region');
+          if (country.get('showSubRegion')) {
+            region = country.get('subRegion');
           }
 
           var options = {
