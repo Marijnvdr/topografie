@@ -5,31 +5,39 @@ export default Ember.Controller.extend({
     score: Score.create(),
     isShowingModalGameReset: false,
     isShowingModalGameEnd: false,
+    isGameOver: false,
     
 actions: {
-    givenAnswer(countryCode) {     
+    givenAnswer(countryCode) {
     	let model = this.get('model');    	
-        let count = this.get('score.count');
-        this.set('score.count', count + 1);
+      let count = this.get('score.count');
+      this.set('score.count', count + 1);
     	let notifcation = {};
-        if (model.get('answer').get('code') === countryCode) {
-            let total = this.get('score.total');
-            this.set('score.total', total + 50);            
-            notifcation.message = 'Great answer!';
-            notifcation.type = 'success';
-            notifcation.autoClear = true;
+      if (model.get('answer').get('code') === countryCode) {
+        this.incrementProperty('score.total', 50);
+        notifcation.message = 'Great answer!';
+        notifcation.type = 'success';
+        notifcation.autoClear = true;
     	} else {
-            notifcation.message = 'Wrong answer';
-            notifcation.type = 'error';          
-            notifcation.autoClear = true;
-        }
-        this.notifications.clearAll();
-        this.notifications.addNotification(notifcation);
+        this.incrementProperty('score.mistakes');
+        notifcation.message = 'Wrong answer';
+        notifcation.type = 'error';          
+        notifcation.autoClear = true;
+      }
+      this.notifications.clearAll();
+      this.notifications.addNotification(notifcation);
+      let mistakes = this.get('score.mistakes');
+      if (mistakes > 2) {
+        this.set('isGameOver', true);
+        this.set('isShowingModalGameEnd', true);               
+      } else {
         if (count < 20) {
           this.send('invalidateModel');    
         } else {
+          this.set('isGameOver', false);
           this.set('isShowingModalGameEnd', true);
-        }        
+        }                
+      }
     },
 
     resetGameWarning: function() {

@@ -11,7 +11,12 @@
   {{#if isShowingModalGameEnd}}
     {{#modal-dialog targetAttachment="center"
                     translucentOverlay=true}}
-      <p>Congratulations! You have reached the end of the game.</p>
+      {{#if isGameOver}}
+        <p style='color:red'>Game over, you have made 3 mistakes.</p>
+      {{else}}
+        <p style='color:green'>Congratulations! You have reached the end of the game.</p>
+      {{/if}}                      
+      
       <p>Score: {{score.total}}</p>      
       <button {{action "doEndGame"}}>OK</button>
     {{/modal-dialog}}
@@ -21,6 +26,7 @@
 <h1>Name: {{score.name}}</h1>
 <h1>Score: {{score.total}} </h1>
 <h1>Question: {{score.count}} </h1>
+<h1>Wrong answers: {{score.mistakes}}</h1>
 <h1>Level: {{levelDescription}}</h1>
 
 <h2>Possible answers:</h2>

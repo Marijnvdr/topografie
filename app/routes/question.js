@@ -16,6 +16,7 @@ export default Ember.Route.extend({
       let controller = this.controllerFor('question');
       controller.set('score.total', 0);
       controller.set('score.count', 1);
+      controller.set('score.mistakes', 0);
       controller.set('score.name', playerName);
     }
   },
