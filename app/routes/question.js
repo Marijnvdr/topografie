@@ -20,7 +20,7 @@ export default Ember.Route.extend({
       controller.set('score.name', playerName);
     }
   },
-
+    
   actions: {
     invalidateModel() {
         this.refresh();

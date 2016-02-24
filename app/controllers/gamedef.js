@@ -5,6 +5,7 @@ export default Ember.Controller.extend({
     score: Score.create(), 
     playerName: '',
     doStartGame: false,
+    people: [],
 
     actions: {
         startGame() {

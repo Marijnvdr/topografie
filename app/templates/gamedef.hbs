@@ -2,3 +2,23 @@
 {{input value=playerName}}
 
 <button {{action 'startGame'}}>Start</button>
+
+<div style='margin-top:40px'>
+  <h1>TOP 10 score list:</h1>
+  <tr>
+   <th align='right' style='width:20px'></th>
+   <th align='right' style='width:100px'>Name</th>
+   <th align='right' style='width:100px'>Questions</th>		
+   <th align='right' style='width:100px'>Mistakes</th>
+   <th align='right' style='width:100px'>Score</th>
+  </tr>
+  {{#each model as |person index|}}
+    <tr>
+	    <td align='right'>{{index}}</td>
+	    <td align='right'>{{person.name}}</td>
+	    <td align='right'>{{person.questionCount}}</td>		
+	    <td align='right'>{{person.mistakeCount}}</td>
+	    <td align='right'>{{person.score}}</td>		
+    </tr>
+  {{/each}}
+</div>
