@@ -1,10 +1,10 @@
 import Ember from 'ember';
-import ENV from 'topografie/config/environment';
 
 export default Ember.Route.extend({
   model: function() {
-    // ToDo: give different difficultyLevels after couple of questions.
-    return this.store.queryRecord('questioncountry', { difficultyLevel: 3 });      
+    let controller = this.controllerFor('question');
+    let level = controller.get('level');
+    return this.store.queryRecord('questioncountry', { difficultyLevel: level });      
   },
 
   activate: function() {    
