@@ -4,12 +4,17 @@ const { Rx } = window;
 
 export default Ember.Route.extend({
   model: function() {
+    let gamedefController = this.controllerFor('gamedef');
+    let doStartGame = gamedefController.get('doStartGame');    
     let controller = this.controllerFor('question');
     let level = controller.get('level');
+    if (doStartGame) {
+      level = 0;
+    }
     return this.store.queryRecord('questioncountry', { difficultyLevel: level });      
   },
 
-  activate: function() {    
+  activate: function() {
     let gamedefController = this.controllerFor('gamedef');
     let doStartGame = gamedefController.get('doStartGame');
     if (doStartGame) {
@@ -20,20 +25,12 @@ export default Ember.Route.extend({
       controller.set('score.count', 1);
       controller.set('score.mistakes', 0);
       controller.set('score.name', playerName);
-      debugger;
-      var src = Rx.Observable.interval(1000)
-      .take(9)
-      .map((x) => {
-        return 50 - x;
-      });     
-
-      var bonusSubscription = src.subscribe((x) => {
-        console.log('bonuspoint!');
-        controller.set('bonus', x);
-      });          
       
-      controller.set('bonusSubscription', bonusSubscription); 
-    }
+      let s = controller.get('bonusObservable').subscribe((x) => {
+        controller.set('bonus', x);
+      });
+      controller.set('bonusSubscription', s);
+    }                
   },
     
   actions: {
