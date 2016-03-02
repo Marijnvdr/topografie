@@ -34,17 +34,13 @@ actions: {
       }
       this.notifications.clearAll();
       this.notifications.addNotification(notifcation);
-      this.set('bonus', 20);
+
       let mistakes = this.get('score.mistakes');
       if (mistakes > 2) {
         this.set('isGameOver', true);
         this.set('isShowingModalGameEnd', true);               
       } else {
-        if (count < 20) {        
-          let s = this.get('bonusObservable').subscribe((x) => {
-            this.set('bonus', x);
-          });
-          this.set('bonusSubscription', s);            
+        if (count < 20) {
           this.send('invalidateModel');    
         } else {
           this.set('isGameOver', false);
@@ -116,7 +112,7 @@ actions: {
     this._super(...arguments);
 
     let src = Rx.Observable.interval(1000)
-    .take(20)
+    .take(21)
     .map((x) => {
       return 20 - x;
     });     
