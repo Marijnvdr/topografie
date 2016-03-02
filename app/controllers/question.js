@@ -6,7 +6,9 @@ export default Ember.Controller.extend({
     isShowingModalGameReset: false,
     isShowingModalGameEnd: false,
     isGameOver: false,
-    
+    bonus: 0,
+    bonusSubscription: null,
+        
 actions: {
     givenAnswer(countryCode) {
     	let model = this.get('model');    	

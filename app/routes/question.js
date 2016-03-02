@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+const { Rx } = window;
+
 export default Ember.Route.extend({
   model: function() {
     let controller = this.controllerFor('question');
@@ -18,6 +20,19 @@ export default Ember.Route.extend({
       controller.set('score.count', 1);
       controller.set('score.mistakes', 0);
       controller.set('score.name', playerName);
+      debugger;
+      var src = Rx.Observable.interval(1000)
+      .take(9)
+      .map((x) => {
+        return 50 - x;
+      });     
+
+      var bonusSubscription = src.subscribe((x) => {
+        console.log('bonuspoint!');
+        controller.set('bonus', x);
+      });          
+      
+      controller.set('bonusSubscription', bonusSubscription); 
     }
   },
     
