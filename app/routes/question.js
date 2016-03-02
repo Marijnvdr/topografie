@@ -1,13 +1,20 @@
 import Ember from 'ember';
-import ENV from 'topografie/config/environment';
+
+const { Rx } = window;
 
 export default Ember.Route.extend({
   model: function() {
-    // ToDo: give different difficultyLevels after couple of questions.
-    return this.store.queryRecord('questioncountry', { difficultyLevel: 3 });      
+    let gamedefController = this.controllerFor('gamedef');
+    let doStartGame = gamedefController.get('doStartGame');    
+    let controller = this.controllerFor('question');
+    let level = controller.get('level');
+    if (doStartGame) {
+      level = 0;
+    }
+    return this.store.queryRecord('questioncountry', { difficultyLevel: level });      
   },
 
-  activate: function() {    
+  activate: function() {
     let gamedefController = this.controllerFor('gamedef');
     let doStartGame = gamedefController.get('doStartGame');
     if (doStartGame) {
@@ -16,10 +23,16 @@ export default Ember.Route.extend({
       let controller = this.controllerFor('question');
       controller.set('score.total', 0);
       controller.set('score.count', 1);
+      controller.set('score.mistakes', 0);
       controller.set('score.name', playerName);
-    }
+      
+      let s = controller.get('bonusObservable').subscribe((x) => {
+        controller.set('bonus', x);
+      });
+      controller.set('bonusSubscription', s);
+    }                
   },
-
+    
   actions: {
     invalidateModel() {
         this.refresh();

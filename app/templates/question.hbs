@@ -1,6 +1,6 @@
 <div style="margin-right: 20px">
   <button {{action "resetGameWarning"}}>Reset game</button>
-  {{#if isShowingModal}}
+  {{#if isShowingModalGameReset}}
     {{#modal-dialog targetAttachment="center"
                     translucentOverlay=true}}
       <p>Do you really want to reset the game?</p>      
@@ -8,11 +8,26 @@
       <button {{action "cancelResetGame"}}>No</button>
     {{/modal-dialog}}
   {{/if}}
+  {{#if isShowingModalGameEnd}}
+    {{#modal-dialog targetAttachment="center"
+                    translucentOverlay=true}}
+      {{#if isGameOver}}
+        <p style='color:red'>Game over, you have made 3 mistakes.</p>
+      {{else}}
+        <p style='color:green'>Congratulations! You have reached the end of the game.</p>
+      {{/if}}                      
+      
+      <p>Score: {{score.total}}</p>      
+      <button {{action "doEndGame"}}>OK</button>
+    {{/modal-dialog}}
+  {{/if}}  
 </div>
 <div style="margin-bottom: 20px">
 <h1>Name: {{score.name}}</h1>
 <h1>Score: {{score.total}} </h1>
 <h1>Question: {{score.count}} </h1>
+<h1>Wrong answers: {{score.mistakes}}</h1>
+<h1>Level: {{levelDescription}} ; Points: {{levelScore}} ; Bonus: {{bonus}}</h1>
 
 <h2>Possible answers:</h2>
 {{#each model.choices as |answer|}}
