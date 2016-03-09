@@ -19,7 +19,8 @@ export default Ember.Component.extend({
           var options = {
               region: region,
               datalessRegionColor: '#f5f5f5',
-              defaultColor: '#8cbbd0'
+              defaultColor: '#8cbbd0',
+              enableRegionInteractivity: false
           };
 
         var chart = new window.google.visualization.GeoChart(document.getElementById('regions_div'));
