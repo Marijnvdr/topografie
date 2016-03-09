@@ -8,7 +8,7 @@ export default DS.JSONAPISerializer.extend({
       obj.id = item.id;
       obj.type = 'country';
       relationshipData.push(obj);
-    };
+    }
     
     let answerData = {};
     answerData.id = payload.answer.id;
@@ -30,7 +30,7 @@ export default DS.JSONAPISerializer.extend({
     obj.type = 'country';
     obj.attributes = item; 
     includedData.push(obj);  
-    };
+    }
      
     return { "data": qc, "included": includedData };
   },

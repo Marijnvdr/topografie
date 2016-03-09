@@ -6,8 +6,12 @@ export default Ember.Route.extend({
   model: function() {
     let controller = this.controllerFor('question');
     let level = controller.get('level');
+    let excludeList = controller.get('score.excludeList');
 
-    return this.store.queryRecord('questioncountry', { difficultyLevel: level });      
+    return this.store.queryRecord('questioncountry', {
+      difficultyLevel: level,
+      excludeList: excludeList
+    });      
   },
 
   afterModel: function() {
@@ -29,6 +33,7 @@ export default Ember.Route.extend({
     controller.set('score.total', 0);
     controller.set('score.count', 1);
     controller.set('score.mistakes', 0);
+    controller.set('score.excludeList', '');
   },
     
   actions: {

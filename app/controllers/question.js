@@ -17,8 +17,24 @@ actions: {
       this.get('bonusSubscription').dispose();
     	let model = this.get('model');    	
       let levelScore = this.get('levelScore') + this.get('bonus');
+      let oldLevel = this.get('level');      
       let count = this.get('score.count');
-      this.set('score.count', count + 1);
+      if (count < 20) {
+        this.set('score.count', count + 1);
+      }      
+      let newLevel = this.get('level');
+      if (oldLevel !== newLevel) {
+        this.set('score.excludeList', '');
+      } else {
+        let answerId = model.get('answer').get('id');
+        let list = this.get('score.excludeList'); 
+        if (list) {
+          list = list + ',' + answerId
+        } else {
+          list = answerId;
+        }
+        this.set('score.excludeList', list);
+      }
     	let notifcation = {};
       if (model.get('answer').get('code') === countryCode) {
         this.incrementProperty('score.total', levelScore);

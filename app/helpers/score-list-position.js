@@ -1,3 +1,5 @@
+import Ember from 'ember';
+
 export function scoreListPosition(params) {
   let value = params[0];
   return value + 1;

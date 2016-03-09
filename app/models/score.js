@@ -5,6 +5,7 @@ export default StorageObject.extend({
   initialContent: {
     name: '',
     total: 0,
-    count: 1
+    count: 1,
+    excludeList: ''
   }
 });
