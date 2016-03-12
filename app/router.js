@@ -9,6 +9,7 @@ Router.map(function() {
 	this.route('gamedef', { path: '/' });
 	this.route('capital', { path: '/capital' });
 	this.route('question', { path: '/question' });
+  this.route('countries', { path: '/countries' });
 });
 
 export default Router;
