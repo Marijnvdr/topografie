@@ -8,12 +8,12 @@ export default Ember.Controller.extend({
     people: [],
 
     actions: {
-        startGame() {
-            let playerName = this.get('playerName');
-            this.set('score.name', playerName);
-            this.set('doStartGame', true);
-            this.notifications.setDefaultClearNotification(1000);
-            this.transitionToRoute('question');
-        }
+      startGame() {
+        let playerName = this.get('playerName');
+        this.set('score.name', playerName);
+        this.set('doStartGame', true);
+        this.notifications.setDefaultClearNotification(1000);
+        this.transitionToRoute('question');
+      }      
     }  
 });

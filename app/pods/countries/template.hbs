@@ -3,3 +3,6 @@
     <li>{{country.name}}</li>
   {{/each}}
 </ul>
+
+{{#pagination-controls onPageChanged=(action "pageChanged") currentPage=currentPage}}
+{{/pagination-controls}}
