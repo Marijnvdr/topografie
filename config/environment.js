@@ -3,6 +3,7 @@
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'topografie',
+    podModulePrefix: 'topografie/pods',
     environment: environment,
     baseURL: '/',
     apiHost: 'http://localhost:57116',
