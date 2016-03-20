@@ -13,7 +13,7 @@ export default DS.JSONAPISerializer.extend({
   },
     */
     
-  normalizeResponse: function(store, primaryModelClass, payload, id, requestType) {
+  normalizeResponse: function(store, primaryModelClass, payload, id) {
     if (id !== null) {      
       return { "data": { "type": primaryModelClass.modelName, "id": id, "attributes": payload } };
     } else {
@@ -24,7 +24,7 @@ export default DS.JSONAPISerializer.extend({
         obj.type = primaryModelClass.modelName;
         obj.attributes = item; 
         data.push(obj);  
-      };
+      }
       return { "data": data };   
     }  
   },

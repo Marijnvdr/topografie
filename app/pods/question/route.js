@@ -1,7 +1,5 @@
 import Ember from 'ember';
 
-const { Rx } = window;
-
 export default Ember.Route.extend({
   model: function() {
     let controller = this.controllerFor('question');
@@ -15,7 +13,6 @@ export default Ember.Route.extend({
   },
 
   afterModel: function() {
-    console.log('afterModel!')
     let gamedefController = this.controllerFor('gamedef');
     let playerName = gamedefController.get('score.name');
 
