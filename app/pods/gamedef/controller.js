@@ -10,12 +10,12 @@ export default Ember.Controller.extend({
       
       this.notifications.setDefaultClearNotification(1000);
     },
-    
+
     actions: {
-      startGame() {
-        let playerName = this.get('playerName');
-        this.set('score.name', playerName);
-        this.transitionToRoute('question');
-      }      
+        startGame() {
+            let playerName = this.get('playerName');
+            this.set('score.name', playerName);
+            this.transitionToRoute('question');
+        }
     }  
 });
