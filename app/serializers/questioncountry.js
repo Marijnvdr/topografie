@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.JSONAPISerializer.extend({
-  normalizeResponse: function(store, primaryModelClass, payload, id, requestType) {
+  normalizeResponse: function(store, primaryModelClass, payload) {
     let relationshipData = [];
     for (let item of payload.choices) {
       let obj = {};

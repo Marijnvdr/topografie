@@ -29,7 +29,7 @@ actions: {
         let answerId = model.get('answer').get('id');
         let list = this.get('score.excludeList'); 
         if (list) {
-          list = list + ',' + answerId
+          list = list + ',' + answerId;
         } else {
           list = answerId;
         }
@@ -44,9 +44,10 @@ actions: {
         notifcation.autoClear = true;
     	} else {
         this.incrementProperty('score.mistakes');
-        notifcation.message = 'Wrong answer';
+        notifcation.message = 'Wrong answer (correct: ' + model.get('answer').get('name_nl') + ')';
         notifcation.type = 'error';          
         notifcation.autoClear = true;
+        notifcation.clearDuration = 2000;
       }
       this.notifications.clearAll();
       this.notifications.addNotification(notifcation);
