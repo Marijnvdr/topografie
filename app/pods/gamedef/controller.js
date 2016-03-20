@@ -4,15 +4,17 @@ import Score from 'topografie/models/score';
 export default Ember.Controller.extend({
     score: Score.create(), 
     playerName: '',
-    doStartGame: false,
-    people: [],
+
+    init() {
+      this._super(...arguments);
+      
+      this.notifications.setDefaultClearNotification(1000);
+    },
 
     actions: {
         startGame() {
             let playerName = this.get('playerName');
             this.set('score.name', playerName);
-            this.set('doStartGame', true);
-            this.notifications.setDefaultClearNotification(1000);
             this.transitionToRoute('question');
         }
     }  
