@@ -1,25 +1,13 @@
-import { Serializer } from 'ember-cli-mirage';
+import JsonApiSerializer from 'ember-cli-mirage/serializers/json-api-serializer';
 
-export default Serializer.extend({  
-  // This will be called for every object in payload array
-  serialize(object, request) {
-    debugger;
-    // This is how to call super, as Mirage borrows [Backbone's implementation of extend](http://backbonejs.org/#Model-extend)
-    let json = Serializer.prototype.serialize.apply(this, arguments);
-    // Add metadata, sort parts of the response, etc.
-
-    return json;
-  },
-  
-  normalize(payload) {
-    debugger;
-    return payload;
-  },
-  
-  normalizeResponse: function(store, primaryModelClass, payload, id, requestType) {
-    debugger;
-    return this._super(store, primaryModelClass, newPayload, id, requestType);
-  }  
+export default JsonApiSerializer.extend({
+  serialize(response, request) {
+    let json = JsonApiSerializer.prototype.serialize.apply(this, arguments);
+    let res = [];
+    for (let item of json.data) {
+      item.name = item.attributes.name; 
+      res.push(item);
+    }
+    return res;
+  } 
 });
-
-
