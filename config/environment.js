@@ -7,11 +7,11 @@ module.exports = function(environment) {
     environment: environment,
     baseURL: '/',
     // apiHost: 'http://localhost:57116',
-    apiHost: 'http://topogame.azurewebsites.net',
+    apiHost: 'http://topografieapi.azurewebsites.net/',
     apiNamespace : 'api',
     locationType: 'auto',
     contentSecurityPolicy: {
-       'connect-src': "'self' 'unsafe-inline' http://localhost:57116 http://topogame.azurewebsites.net",
+       'connect-src': "'self' 'unsafe-inline' http://localhost:57116 http://http://topografieapi.azurewebsites.net/",
        'script-src': "'self' 'unsafe-inline' 'unsafe-eval' https://*.googleapis.com https://*.gstatic.com https://*.google.com http://www.gstatic.com",
        'img-src': "'self' https://*.googleapis.com https://*.gstatic.com https://*.google.com",
        'font-src': "'self' https://*.gstatic.com https://*.google.com",
